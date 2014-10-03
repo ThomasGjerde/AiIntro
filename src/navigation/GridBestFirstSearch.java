@@ -38,6 +38,7 @@ public class GridBestFirstSearch extends BestFirstSearch{
 			r2.setStatus(Status.Visiting);
 			r2 = r2.parent;
 		}
+		graphics.setLists(this.openList, this.closedList);
 		graphics.setBoard(board);
 	}
 

@@ -1,5 +1,7 @@
 package navigation;
 
+import gui.BoardGraphics;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -17,25 +19,72 @@ public class Board {
 	public int steps = 0;
 	public NavNode[][] boardArray;
 	public boolean complete = false;
+	public ArrayList<NavNode> terrainList;
 	
 	public Board(String path) throws IOException{
 		ArrayList<String> input = IOUtils.getInputFromFile(path);
-		if(input.size() >= 2){
-			setBoardSize(parseLine(input.get(0)));
-			setStartAndEnd(parseLine(input.get(1)));
-			generateBoard();
-			for(int i = 2; i < input.size(); i++){
-				generateObstacle(parseLine(input.get(i)));
+		fillTerrainList();
+		ArrayList<NavNode> tempBoard = new ArrayList<NavNode>();
+		for(int i = 0; i < input.size(); i++){
+			tempBoard.addAll((parseLine(i,input.get(i))));
+			size.y = i+1;
+		}
+		boardArray = new NavNode[size.x][size.y];
+		for(int i = 0; i < tempBoard.size(); i++){
+			NavNode tempNode = tempBoard.get(i);
+			boardArray[tempNode.pos.x][tempNode.pos.y] = tempNode;
+			if(tempNode.type.equals(NavNode.type_start)){
+				startPos = tempNode.pos;
+			}else if(tempNode.type.equals(NavNode.type_end)){
+				endPos = tempNode.pos;
 			}
-			setChildrenForAllNodes();
 		}
+		setChildrenForAllNodes();
+		/*
+		String total = "";
+		for(int i = 0; i < boardArray[0].length; i++){
+			
+			for(int j = 0; j < boardArray.length; j++){
+				total += (boardArray[j][i].type);
+				//System.out.println(boardArray[i][j].pos.x +" " + boardArray[i][j].pos.y);
+			}
+			total += "\n";
+		}
+		System.out.println(total);
+		*/
+		
 	}
-	public ArrayList<Integer> parseLine(String input){
-		String tempArray[] = input.split(",");
-		ArrayList<Integer> returnArray = new ArrayList<Integer>();
+	private void fillTerrainList(){
+		terrainList = new ArrayList<NavNode>();
+		terrainList.add(new NavNode(NavNode.type_open,1));
+		terrainList.add(new NavNode(NavNode.type_obstacle,1));
+		terrainList.add(new NavNode(NavNode.type_start,0));
+		terrainList.add(new NavNode(NavNode.type_end,0));
+		terrainList.add(new NavNode(NavNode.type_water,100));
+		terrainList.add(new NavNode(NavNode.type_mountain,50));
+		terrainList.add(new NavNode(NavNode.type_forest,10));
+		terrainList.add(new NavNode(NavNode.type_grass, 5));
+		terrainList.add(new NavNode(NavNode.type_road,1));
+	}
+	private NavNode parseNode(int x, int y,String input){
+			for(int i = 0; i < terrainList.size(); i++){
+				if(input.equals(terrainList.get(i).type)){
+					return new NavNode(new Point(x,y),terrainList.get(i).type,terrainList.get(i).cost);
+				}
+			}
+			System.out.println("Unproccessed string: " + input);
+			return null;
+	}
+	public ArrayList<NavNode> parseLine(int y, String input){
+		//input = input.replace("\r", "");
+		char tempArray[] = input.toCharArray();
+		ArrayList<NavNode> returnArray = new ArrayList<NavNode>();
 		for(int i = 0; i < tempArray.length; i++){
-			returnArray.add(Integer.parseInt(tempArray[i]));
+			System.out.println(tempArray[i]);
+				returnArray.add(parseNode(i, y, Character.toString(tempArray[i])));
+			
 		}
+		size.x = returnArray.size();
 		return returnArray;
 	}
 	public boolean isEndNode(NavNode node){
@@ -77,29 +126,6 @@ public class Board {
 		if(node.pos.y > 0){
 			node.addChild(boardArray[node.pos.x][node.pos.y - 1]);
 		}
-	}
-	private void generateObstacle(ArrayList<Integer> input){
-		int x = input.get(0);
-		int y = input.get(1);
-		int width = input.get(2);
-		int height = input.get(3);
-		for(int i = x; i < (x + width); i++){
-			for(int j = y; j < (y + height); j++){
-				boardArray[i][j].status = Node.Status.Obstacle;
-			}
-		}
-	}
-	private void generateBoard(){
-		boardArray = new NavNode[size.x][size.y];
-		for(int i = 0; i < size.x; i++){
-			for(int j = 0; j < size.y; j++){
-				boardArray[i][j] = new NavNode(new Point(i,j));
-			}
-		}
-	}
-	private void setBoardSize(ArrayList<Integer> input){
-		size.x = input.get(0);
-		size.y = input.get(1);
 	}
 	private void setStartAndEnd(ArrayList<Integer> input){
 		startPos.x = input.get(0);
