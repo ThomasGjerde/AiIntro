@@ -1,10 +1,11 @@
-package aiprog.navigation;
+package navigation;
 
-import aiprog.gui.BoardGraphics;
-import aiprog.model.Node;
-import aiprog.model.Point;
-import aiprog.model.Node.Status;
-import aiprog.search.DepthFirstSearch;
+import search.DepthFirstSearch;
+import model.Node;
+import model.Node.Status;
+import model.Point;
+import gui.BoardGraphics;
+
 
 public class GridDepthFirstSearch extends DepthFirstSearch{
 	Board board;

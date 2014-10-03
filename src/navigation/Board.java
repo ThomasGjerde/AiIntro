@@ -1,13 +1,14 @@
-package aiprog.navigation;
+package navigation;
 
 import java.io.*;
 import java.util.ArrayList;
 
-import aiprog.model.NavNode;
-import aiprog.model.Node;
-import aiprog.model.Point;
-import aiprog.model.Node.Status;
-import aiprog.utility.IOUtils;
+import utility.IOUtils;
+
+import model.NavNode;
+import model.Node;
+import model.Node.Status;
+import model.Point;
 
 public class Board {
 	public Point size = new Point();

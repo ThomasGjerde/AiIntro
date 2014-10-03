@@ -1,7 +1,8 @@
-package aiprog.gui;
+package gui;
 
-import aiprog.model.DoublePoint;
-import aiprog.model.Point;
+import model.DoublePoint;
+import model.Point;
+
 
 public class Line {
 	public Point startPoint = new Point();

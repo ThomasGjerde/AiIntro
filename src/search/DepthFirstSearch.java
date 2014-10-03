@@ -1,7 +1,8 @@
-package aiprog.search;
+package search;
 
-import aiprog.model.Node;
-import aiprog.model.Point;
+import model.Node;
+import model.Point;
+
 
 public abstract class DepthFirstSearch extends AStarWithEndPoint{
 	int currentHeuristic =  0;

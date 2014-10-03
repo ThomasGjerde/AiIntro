@@ -1,10 +1,11 @@
-package aiprog.navigation;
+package navigation;
 
-import aiprog.gui.BoardGraphics;
-import aiprog.model.Node;
-import aiprog.model.Node.Status;
-import aiprog.model.Point;
-import aiprog.search.BestFirstSearch;
+import gui.BoardGraphics;
+import model.Node;
+import model.Node.Status;
+import model.Point;
+import search.BestFirstSearch;
+
 
 public class GridBestFirstSearch extends BestFirstSearch{
 	Board board;

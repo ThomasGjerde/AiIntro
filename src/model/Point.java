@@ -1,4 +1,4 @@
-package aiprog.model;
+package model;
 
 public class Point {
 	//Clean up this shit

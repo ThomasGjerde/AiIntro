@@ -1,9 +1,9 @@
-package aiprog.gui;
+package gui;
 
 import java.awt.Color;
+import model.Node;
+import navigation.Board;
 
-import aiprog.model.Node;
-import aiprog.navigation.Board;
 
 public class BoardGraphics extends Graphics{
 

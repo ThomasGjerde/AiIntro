@@ -1,10 +1,11 @@
-package aiprog.search;
+package search;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import aiprog.model.Node;
-import aiprog.model.Node.Status;
+
+import model.Node;
+import model.Node.Status;
 
 public abstract class AStar {
 	protected ArrayList<Node> openList = new ArrayList<Node>();

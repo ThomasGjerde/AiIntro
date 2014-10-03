@@ -1,6 +1,7 @@
-package aiprog.gui;
+package gui;
 
-import aiprog.model.Point;
+import model.Point;
+
 
 public class GridText {
 	public Point position;

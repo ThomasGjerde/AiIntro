@@ -1,4 +1,4 @@
-package aiprog.gui;
+package gui;
 
 import java.awt.Graphics;
 

@@ -1,8 +1,9 @@
-package aiprog.search;
+package search;
 
-import aiprog.model.NavNode;
-import aiprog.model.Node;
-import aiprog.model.Point;
+import model.NavNode;
+import model.Node;
+import model.Point;
+
 
 public abstract class BestFirstSearch extends AStarWithEndPoint{
 

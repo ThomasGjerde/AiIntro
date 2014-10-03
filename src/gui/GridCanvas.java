@@ -1,11 +1,10 @@
-package aiprog.gui;
+package gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-import aiprog.model.Point;
-import aiprog.utility.GraphicsHelper;
+import model.Point;
 
 @SuppressWarnings("serial")
 public class GridCanvas extends Canvas

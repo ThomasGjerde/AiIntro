@@ -1,4 +1,4 @@
-package aiprog.model;
+package model;
 
 import java.util.ArrayList;
 

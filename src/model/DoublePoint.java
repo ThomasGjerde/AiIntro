@@ -1,4 +1,4 @@
-package aiprog.model;
+package model;
 
 public class DoublePoint {
 	private double x;
