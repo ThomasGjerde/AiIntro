@@ -16,6 +16,7 @@ public abstract class AStar {
 	protected boolean victory = false;
 	public AStar(Node startNode){
 		this.currentNode = startNode;
+		//System.out.println(currentNode.cost);
 	}
 	public void search(){
 		setHeuristic(currentNode);
@@ -26,6 +27,7 @@ public abstract class AStar {
 				Node tempNode = children.get(i);
 				if(!openList.contains(tempNode) && !closedList.contains(tempNode)){
 					tempNode.parent = currentNode;
+					//System.out.println(tempNode.cost);
 					setHeuristic(tempNode);
 					addToOpenList(tempNode);
 				}

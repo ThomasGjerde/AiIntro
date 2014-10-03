@@ -12,8 +12,8 @@ public abstract class Node {
 	public Node(){
 		status = Status.Unvisited;
 		children = new ArrayList<Node>();
-		heuristic = 0;
-		cost = 1;
+		//heuristic = 0;
+		//cost = 1;
 	}
 	
 	public void addChild(Node node){
