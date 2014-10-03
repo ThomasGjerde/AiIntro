@@ -15,7 +15,6 @@ public class NavNode extends Node{
 	public static final String type_grass = "g";
 	public static final String type_road = "r";
 	public String type;
-	public int cost;
 	
 	public NavNode(Point position,String type, int cost) {
 		super();
