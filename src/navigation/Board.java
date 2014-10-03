@@ -72,7 +72,7 @@ public class Board {
 					return new NavNode(new Point(x,y),terrainList.get(i).type,terrainList.get(i).cost);
 				}
 			}
-			System.out.println("Unproccessed string: " + input);
+			//System.out.println("Unproccessed string: " + input);
 			return null;
 	}
 	public ArrayList<NavNode> parseLine(int y, String input){
@@ -80,7 +80,7 @@ public class Board {
 		char tempArray[] = input.toCharArray();
 		ArrayList<NavNode> returnArray = new ArrayList<NavNode>();
 		for(int i = 0; i < tempArray.length; i++){
-			System.out.println(tempArray[i]);
+			//System.out.println(tempArray[i]);
 				returnArray.add(parseNode(i, y, Character.toString(tempArray[i])));
 			
 		}

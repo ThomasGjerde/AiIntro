@@ -44,6 +44,9 @@ public abstract class AStar {
 			if(victory){
 				System.out.println("victory");
 				calculatePathLenght();
+				System.out.println("PathLength: " + pathLength);
+				System.out.println("Steps: " + steps);
+				calculatePathLenght();
 			}
 
 		}
