@@ -16,6 +16,9 @@ public class GridCanvas extends Canvas
 		super();
 		cells = new Color[sizeX][sizeY];
 	}
+	public void clearAllText(){
+		texts.clear();
+	}
 	public void clearColor(Color color){
 		for(int i = 0; i < cells.length; i++){
 			for(int j = 0; j < cells[0].length; j++){

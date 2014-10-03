@@ -23,6 +23,7 @@ public class BoardGraphics extends Graphics{
 	public void setLists(ArrayList<Node> openList, ArrayList<Node> closedList){
 		this.openList = new ArrayList<Node>(openList);
 		this.closedList = new ArrayList<Node>(closedList);
+		grid.clearAllText();
 	}
 	public void setBoard(Board board){
 		grid.clearColor(Color.RED); //Delete old tail
