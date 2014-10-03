@@ -54,6 +54,40 @@ public class Board {
 		*/
 		
 	}
+	public int getManhattanCost(Point startPoint, Point endPoint){
+		/*
+		int totalCost = 0;
+		if(startPoint.x < endPoint.x){
+			int x = startPoint.x;
+			while(x < endPoint.x){
+				totalCost += boardArray[x][startPoint.y].cost;
+				x++;
+			}
+		}else{
+			int x = startPoint.x;
+			while(x > endPoint.x){
+				totalCost += boardArray[x][startPoint.y].cost;
+				x--;
+			}
+		}
+		if(startPoint.y < endPoint.y){
+			int y = startPoint.y;
+			while(y < endPoint.y){
+				totalCost += boardArray[endPoint.x][y].cost;
+				y++;
+			}
+		}else{
+			int y = startPoint.y;
+			while(y > endPoint.y){
+				totalCost += boardArray[endPoint.x][y].cost;
+			}
+		}
+		*/
+		int totalCost = 0;
+		totalCost += startPoint.getManhattanDistance(endPoint);
+		
+		return totalCost;
+	}
 	private void fillTerrainList(){
 		terrainList = new ArrayList<NavNode>();
 		terrainList.add(new NavNode(NavNode.type_open,1));

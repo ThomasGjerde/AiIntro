@@ -1,6 +1,7 @@
 package navigation;
 
 import gui.BoardGraphics;
+import model.NavNode;
 import model.Node;
 import model.Node.Status;
 import model.Point;
@@ -15,7 +16,11 @@ public class GridBestFirstSearch extends BestFirstSearch{
 		this.board = board;
 		graphics = new BoardGraphics(board);
 	}
-
+	protected void setHeuristic(Node node) {
+		//node.heuristic = this.endPoint.getManhattanDistance(((NavNode)node).pos) + node.getCostFromStart();
+		node.heuristic = node.getCostFromStart() + node.cost;
+		System.out.println(node.heuristic);
+	}
 	@Override
 	protected void updateGui() {
 		try {

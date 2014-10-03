@@ -8,7 +8,7 @@ import model.Point;
 
 public abstract class AStarWithEndPoint extends AStar{
 
-	Point endPoint = new Point();
+	protected Point endPoint = new Point();
 	public AStarWithEndPoint(Node startNode, Point endPoint) {
 		super(startNode);
 		this.endPoint = endPoint;

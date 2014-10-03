@@ -29,26 +29,26 @@ public class BoardGraphics extends Graphics{
 		grid.clearColor(Color.RED); //Delete old tail
         for(int i = 0; i < board.size.x; i++)
         {
-        	for(int j = board.size.y; j > 0; j--)
+        	for(int j = 0; j < board.size.y; j++)
         	{
-        		NavNode tempNode = board.boardArray[i][board.size.y -j];
-        		if(board.boardArray[i][board.size.y - j].status == Node.Status.Obstacle){
-        			grid.setCellColorWithoutRepaint(i, j -1, Color.BLACK);
+        		NavNode tempNode = board.boardArray[i][j];
+        		if(board.boardArray[i][j].status == Node.Status.Obstacle){
+        			grid.setCellColorWithoutRepaint(i,j, Color.BLACK);
         		}
-        		else if(board.boardArray[i][board.size.y - j].status == Node.Status.Visiting){
-        			grid.setCellColorWithoutRepaint(i, j -1, Color.RED);
-        		}else if(board.boardArray[i][board.size.y - j].type.equals(NavNode.type_start)){
-        			grid.setCellColorWithoutRepaint(i, j -1, Color.WHITE);
+        		else if(board.boardArray[i][j].status == Node.Status.Visiting){
+        			grid.setCellColorWithoutRepaint(i, j, Color.RED);
+        		}else if(board.boardArray[i][j].type.equals(NavNode.type_start)){
+        			grid.setCellColorWithoutRepaint(i, j, Color.WHITE);
         		}else if(tempNode.type.equals(NavNode.type_forest)){
-        			grid.setCellColorWithoutRepaint(i, j -1, new Color(51,153,0));
+        			grid.setCellColorWithoutRepaint(i, j, new Color(51,153,0));
         		}else if(tempNode.type.equals(NavNode.type_grass)){
-        			grid.setCellColorWithoutRepaint(i, j -1, Color.GREEN);
+        			grid.setCellColorWithoutRepaint(i, j, Color.GREEN);
         		}else if(tempNode.type.equals(NavNode.type_mountain)){
-        			grid.setCellColorWithoutRepaint(i, j -1, Color.GRAY);
+        			grid.setCellColorWithoutRepaint(i, j, Color.GRAY);
         		}else if(tempNode.type.equals(NavNode.type_water)){
-        			grid.setCellColorWithoutRepaint(i, j -1, Color.BLUE);
+        			grid.setCellColorWithoutRepaint(i, j, Color.BLUE);
         		}else if(tempNode.type.equals(NavNode.type_road)){
-        			grid.setCellColorWithoutRepaint(i, j -1, new Color(102, 51, 0));
+        			grid.setCellColorWithoutRepaint(i, j, new Color(102, 51, 0));
         		}
         	}
         }
