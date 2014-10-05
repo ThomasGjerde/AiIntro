@@ -4,13 +4,13 @@ import gui.BoardGraphics;
 import model.Node;
 import model.Node.Status;
 import model.Point;
-import search.DjikstraSearch;
+import search.DijkstraSearch;
 
 
-public class GridDjikstraSearch extends DjikstraSearch{
+public class GridDijkstraSearch extends DijkstraSearch{
 	Board board;
 	BoardGraphics graphics;
-	public GridDjikstraSearch(Node startNode, Point endPoint, Board board) {
+	public GridDijkstraSearch(Node startNode, Point endPoint, Board board) {
 		super(startNode, endPoint);
 		this.board = board;
 		graphics = new BoardGraphics(board);

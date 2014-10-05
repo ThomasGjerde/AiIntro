@@ -5,9 +5,9 @@ import model.Node;
 import model.Point;
 
 
-public abstract class DjikstraSearch extends AStarWithEndPoint{
+public abstract class DijkstraSearch extends AStarWithEndPoint{
 
-	public DjikstraSearch(Node startNode, Point endPoint) {
+	public DijkstraSearch(Node startNode, Point endPoint) {
 		super(startNode, endPoint);
 	}
 	protected void setHeuristic(Node node) {

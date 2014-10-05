@@ -13,6 +13,7 @@ public abstract class AStar {
 	protected Node currentNode;
 	protected int steps = 0;
 	protected int pathLength = 0;
+	protected int totalCost = 0;
 	protected boolean victory = false;
 	public AStar(Node startNode){
 		this.currentNode = startNode;
@@ -48,7 +49,7 @@ public abstract class AStar {
 				calculatePathLenght();
 				System.out.println("PathLength: " + pathLength);
 				System.out.println("Steps: " + steps);
-				calculatePathLenght();
+				System.out.println("Path cost: " + totalCost);
 			}
 
 		}
@@ -60,6 +61,7 @@ public abstract class AStar {
 		if(currentNode != null){
 			Node tempNode = currentNode;
 			while(tempNode != null){
+				totalCost += tempNode.cost;
 				tempNode = tempNode.parent;
 				pathLength++;
 			}

@@ -1,7 +1,4 @@
 package navigation;
-
-import gui.BoardGraphics;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -40,53 +37,6 @@ public class Board {
 			}
 		}
 		setChildrenForAllNodes();
-		/*
-		String total = "";
-		for(int i = 0; i < boardArray[0].length; i++){
-			
-			for(int j = 0; j < boardArray.length; j++){
-				total += (boardArray[j][i].type);
-				//System.out.println(boardArray[i][j].pos.x +" " + boardArray[i][j].pos.y);
-			}
-			total += "\n";
-		}
-		System.out.println(total);
-		*/
-		
-	}
-	public int getManhattanCost(Point startPoint, Point endPoint){
-		/*
-		int totalCost = 0;
-		if(startPoint.x < endPoint.x){
-			int x = startPoint.x;
-			while(x < endPoint.x){
-				totalCost += boardArray[x][startPoint.y].cost;
-				x++;
-			}
-		}else{
-			int x = startPoint.x;
-			while(x > endPoint.x){
-				totalCost += boardArray[x][startPoint.y].cost;
-				x--;
-			}
-		}
-		if(startPoint.y < endPoint.y){
-			int y = startPoint.y;
-			while(y < endPoint.y){
-				totalCost += boardArray[endPoint.x][y].cost;
-				y++;
-			}
-		}else{
-			int y = startPoint.y;
-			while(y > endPoint.y){
-				totalCost += boardArray[endPoint.x][y].cost;
-			}
-		}
-		*/
-		int totalCost = 0;
-		totalCost += startPoint.getManhattanDistance(endPoint);
-		
-		return totalCost;
 	}
 	private void fillTerrainList(){
 		terrainList = new ArrayList<NavNode>();
@@ -106,17 +56,13 @@ public class Board {
 					return new NavNode(new Point(x,y),terrainList.get(i).type,terrainList.get(i).cost);
 				}
 			}
-			//System.out.println("Unproccessed string: " + input);
 			return null;
 	}
 	public ArrayList<NavNode> parseLine(int y, String input){
-		//input = input.replace("\r", "");
 		char tempArray[] = input.toCharArray();
 		ArrayList<NavNode> returnArray = new ArrayList<NavNode>();
 		for(int i = 0; i < tempArray.length; i++){
-			//System.out.println(tempArray[i]);
 				returnArray.add(parseNode(i, y, Character.toString(tempArray[i])));
-			
 		}
 		size.x = returnArray.size();
 		return returnArray;
@@ -160,11 +106,5 @@ public class Board {
 		if(node.pos.y > 0){
 			node.addChild(boardArray[node.pos.x][node.pos.y - 1]);
 		}
-	}
-	private void setStartAndEnd(ArrayList<Integer> input){
-		startPos.x = input.get(0);
-		startPos.y = input.get(1);
-		endPos.x = input.get(2);
-		endPos.y = input.get(3);
 	}
 }

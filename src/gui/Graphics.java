@@ -15,7 +15,7 @@ public class Graphics {
 		}
         grid = new GridCanvas(sizeX,sizeY);
         JFrame window = new JFrame();
-        window.setSize(1024, 730);
+        window.setSize(1280, 730);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.add(grid);
         window.setVisible(true);

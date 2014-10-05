@@ -27,15 +27,12 @@ public class BoardGraphics extends Graphics{
 	}
 	public void setBoard(Board board){
 		grid.clearColor(Color.RED); //Delete old tail
-        for(int i = 0; i < board.size.x; i++)
-        {
-        	for(int j = 0; j < board.size.y; j++)
-        	{
+        for(int i = 0; i < board.size.x; i++){
+        	for(int j = 0; j < board.size.y; j++){
         		NavNode tempNode = board.boardArray[i][j];
         		if(board.boardArray[i][j].status == Node.Status.Obstacle){
         			grid.setCellColorWithoutRepaint(i,j, Color.BLACK);
-        		}
-        		else if(board.boardArray[i][j].status == Node.Status.Visiting){
+        		}else if(board.boardArray[i][j].status == Node.Status.Visiting){
         			grid.setCellColorWithoutRepaint(i, j, Color.RED);
         		}else if(board.boardArray[i][j].type.equals(NavNode.type_start)){
         			grid.setCellColorWithoutRepaint(i, j, Color.WHITE);

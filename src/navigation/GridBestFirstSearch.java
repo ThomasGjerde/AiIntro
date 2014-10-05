@@ -16,16 +16,11 @@ public class GridBestFirstSearch extends BestFirstSearch{
 		this.board = board;
 		graphics = new BoardGraphics(board);
 	}
-	protected void setHeuristic(Node node) {
-		//node.heuristic = this.endPoint.getManhattanDistance(((NavNode)node).pos) + node.getCostFromStart();
-		node.heuristic = node.getCostFromStart() + node.cost + (((NavNode) node).pos.getManhattanDistance(endPoint));
-		//node.heuristic = this.endPoint.getManhattanDistance(((NavNode)node).pos) + node.getCostFromStart();
-		//System.out.println(node.heuristic);
-	}
+
 	@Override
 	protected void updateGui() {
 		try {
-			Thread.sleep(0);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
