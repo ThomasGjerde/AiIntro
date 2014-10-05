@@ -48,4 +48,11 @@ public class GridBestFirstSearch extends BestFirstSearch{
 		
 	}
 
+	@Override
+	protected void runVictory()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

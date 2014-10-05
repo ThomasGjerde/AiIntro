@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import utility.IOUtils;
 
-import model.NavNode;
 import model.Node;
+import model.TerrainNode;
 import model.Node.Status;
 import model.Point;
 
@@ -14,60 +14,60 @@ public class Board {
 	public Point startPos = new Point();
 	public Point endPos = new Point();
 	public int steps = 0;
-	public NavNode[][] boardArray;
+	public TerrainNode[][] boardArray;
 	public boolean complete = false;
-	public ArrayList<NavNode> terrainList;
+	public ArrayList<TerrainNode> terrainList;
 	
 	public Board(String path) throws IOException{
 		ArrayList<String> input = IOUtils.getInputFromFile(path);
 		fillTerrainList();
-		ArrayList<NavNode> tempBoard = new ArrayList<NavNode>();
+		ArrayList<TerrainNode> tempBoard = new ArrayList<TerrainNode>();
 		for(int i = 0; i < input.size(); i++){
 			tempBoard.addAll((parseLine(i,input.get(i))));
 			size.y = i+1;
 		}
-		boardArray = new NavNode[size.x][size.y];
+		boardArray = new TerrainNode[size.x][size.y];
 		for(int i = 0; i < tempBoard.size(); i++){
-			NavNode tempNode = tempBoard.get(i);
+			TerrainNode tempNode = tempBoard.get(i);
 			boardArray[tempNode.pos.x][tempNode.pos.y] = tempNode;
-			if(tempNode.type.equals(NavNode.type_start)){
+			if(tempNode.type.equals(TerrainNode.type_start)){
 				startPos = tempNode.pos;
-			}else if(tempNode.type.equals(NavNode.type_end)){
+			}else if(tempNode.type.equals(TerrainNode.type_end)){
 				endPos = tempNode.pos;
 			}
 		}
 		setChildrenForAllNodes();
 	}
 	private void fillTerrainList(){
-		terrainList = new ArrayList<NavNode>();
-		terrainList.add(new NavNode(NavNode.type_open,1));
-		terrainList.add(new NavNode(NavNode.type_obstacle,1));
-		terrainList.add(new NavNode(NavNode.type_start,0));
-		terrainList.add(new NavNode(NavNode.type_end,0));
-		terrainList.add(new NavNode(NavNode.type_water,100));
-		terrainList.add(new NavNode(NavNode.type_mountain,50));
-		terrainList.add(new NavNode(NavNode.type_forest,10));
-		terrainList.add(new NavNode(NavNode.type_grass, 5));
-		terrainList.add(new NavNode(NavNode.type_road,1));
+		terrainList = new ArrayList<TerrainNode>();
+		terrainList.add(new TerrainNode(TerrainNode.type_open,1));
+		terrainList.add(new TerrainNode(TerrainNode.type_obstacle,1));
+		terrainList.add(new TerrainNode(TerrainNode.type_start,0));
+		terrainList.add(new TerrainNode(TerrainNode.type_end,0));
+		terrainList.add(new TerrainNode(TerrainNode.type_water,100));
+		terrainList.add(new TerrainNode(TerrainNode.type_mountain,50));
+		terrainList.add(new TerrainNode(TerrainNode.type_forest,10));
+		terrainList.add(new TerrainNode(TerrainNode.type_grass, 5));
+		terrainList.add(new TerrainNode(TerrainNode.type_road,1));
 	}
-	private NavNode parseNode(int x, int y,String input){
+	private TerrainNode parseNode(int x, int y,String input){
 			for(int i = 0; i < terrainList.size(); i++){
 				if(input.equals(terrainList.get(i).type)){
-					return new NavNode(new Point(x,y),terrainList.get(i).type,terrainList.get(i).cost);
+					return new TerrainNode(new Point(x,y),terrainList.get(i).type,terrainList.get(i).cost);
 				}
 			}
 			return null;
 	}
-	public ArrayList<NavNode> parseLine(int y, String input){
+	public ArrayList<TerrainNode> parseLine(int y, String input){
 		char tempArray[] = input.toCharArray();
-		ArrayList<NavNode> returnArray = new ArrayList<NavNode>();
+		ArrayList<TerrainNode> returnArray = new ArrayList<TerrainNode>();
 		for(int i = 0; i < tempArray.length; i++){
 				returnArray.add(parseNode(i, y, Character.toString(tempArray[i])));
 		}
 		size.x = returnArray.size();
 		return returnArray;
 	}
-	public boolean isEndNode(NavNode node){
+	public boolean isEndNode(TerrainNode node){
 		if(node.pos.x == endPos.x && node.pos.y == endPos.y){
 			return true;
 		}else{
@@ -93,7 +93,7 @@ public class Board {
 			}
 		}
 	}
-	private void setChildren(NavNode node){
+	private void setChildren(TerrainNode node){
 		if(node.pos.x > 0){
 			node.addChild(boardArray[node.pos.x -1][node.pos.y]);
 		}

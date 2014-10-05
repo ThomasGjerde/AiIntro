@@ -40,12 +40,14 @@ public class GridCanvas extends Canvas
 	protected void renderGraphics(Graphics g) {
 		for(int i = 0; i < cells.length; i++){
 			for(int j = 0; j < cells[0].length; j++){
+				int cellX = scale + (i*scale);
+				int cellY = scale + (j*scale);
 				if(cells[i][j] != null){
-					int cellX = scale + (i*scale);
-					int cellY = scale + (j*scale);
 					g.setColor(cells[i][j]);
 					g.fillRect(cellX, cellY, scale - spacing, scale - spacing);
 				}
+				g.setColor(Color.BLACK);
+				g.drawRect(cellX, cellY, scale - spacing, scale - spacing);
 			}
 		}
 		drawLines(g);

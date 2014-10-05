@@ -46,4 +46,11 @@ public class GridBreadthFirstSearch extends BreadthFirstSearch{
 		
 	}
 
+	@Override
+	protected void runVictory()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

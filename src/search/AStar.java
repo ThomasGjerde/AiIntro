@@ -53,12 +53,14 @@ public abstract class AStar {
 				System.out.println("PathLength: " + pathLength);
 				System.out.println("Steps: " + steps);
 				System.out.println("Path cost: " + totalCost);
+				runVictory();
 			}
 
 		}
 	}
 	protected abstract boolean checkVictory();
 	protected abstract void processCurrentNode();
+	protected abstract void runVictory();
 	protected void calculatePathLenght(){
 		pathLength = 0;
 		if(currentNode != null){

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import model.NavNode;
 import model.Node;
 import model.Point;
+import model.TerrainNode;
 import navigation.Board;
 
 
@@ -29,22 +30,22 @@ public class BoardGraphics extends Graphics{
 		grid.clearColor(Color.RED); //Delete old tail
         for(int i = 0; i < board.size.x; i++){
         	for(int j = 0; j < board.size.y; j++){
-        		NavNode tempNode = board.boardArray[i][j];
-        		if(board.boardArray[i][j].status == Node.Status.Obstacle){
+        		TerrainNode tempNode = board.boardArray[i][j];
+        		if(tempNode.status == Node.Status.Obstacle){
         			grid.setCellColorWithoutRepaint(i,j, Color.BLACK);
-        		}else if(board.boardArray[i][j].status == Node.Status.Visiting){
+        		}else if(tempNode.status == Node.Status.Visiting){
         			grid.setCellColorWithoutRepaint(i, j, Color.RED);
-        		}else if(board.boardArray[i][j].type.equals(NavNode.type_start)){
+        		}else if(tempNode.type.equals(TerrainNode.type_start) || tempNode.type.equals(TerrainNode.type_end)){
         			grid.setCellColorWithoutRepaint(i, j, Color.WHITE);
-        		}else if(tempNode.type.equals(NavNode.type_forest)){
+        		}else if(tempNode.type.equals(TerrainNode.type_forest)){
         			grid.setCellColorWithoutRepaint(i, j, new Color(51,153,0));
-        		}else if(tempNode.type.equals(NavNode.type_grass)){
+        		}else if(tempNode.type.equals(TerrainNode.type_grass)){
         			grid.setCellColorWithoutRepaint(i, j, Color.GREEN);
-        		}else if(tempNode.type.equals(NavNode.type_mountain)){
+        		}else if(tempNode.type.equals(TerrainNode.type_mountain)){
         			grid.setCellColorWithoutRepaint(i, j, Color.GRAY);
-        		}else if(tempNode.type.equals(NavNode.type_water)){
+        		}else if(tempNode.type.equals(TerrainNode.type_water)){
         			grid.setCellColorWithoutRepaint(i, j, Color.BLUE);
-        		}else if(tempNode.type.equals(NavNode.type_road)){
+        		}else if(tempNode.type.equals(TerrainNode.type_road)){
         			grid.setCellColorWithoutRepaint(i, j, new Color(102, 51, 0));
         		}
         	}

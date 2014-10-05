@@ -46,4 +46,11 @@ public class GridDepthFirstSearch extends DepthFirstSearch{
 	protected void processCurrentNode() {
 		
 	}
+
+	@Override
+	protected void runVictory()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

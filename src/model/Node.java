@@ -7,7 +7,7 @@ public abstract class Node {
 	public Node parent;
 	public Status status;
 	public int heuristic;
-	public int cost;
+	public int cost = 1;
 	
 	public Node(){
 		status = Status.Unvisited;

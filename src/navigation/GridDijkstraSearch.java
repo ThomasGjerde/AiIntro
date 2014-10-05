@@ -47,4 +47,11 @@ public class GridDijkstraSearch extends DijkstraSearch{
 		
 	}
 
+	@Override
+	protected void runVictory()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }
