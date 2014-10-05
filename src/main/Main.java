@@ -15,7 +15,7 @@ public class Main {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		try {
-			Board board = new Board("boards/board-2-4.txt");
+			Board board = new Board("boards/board-2-2.txt");
 			GridBestFirstSearch gbfs = new GridBestFirstSearch(board.boardArray[board.startPos.x][board.startPos.y],board.endPos, board);
 			gbfs.search();
 			//BoardGraphics graphics = new BoardGraphics(board);

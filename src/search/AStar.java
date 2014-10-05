@@ -28,7 +28,6 @@ public abstract class AStar {
 				Node tempNode = children.get(i);
 				if(!openList.contains(tempNode) && !closedList.contains(tempNode)){
 					tempNode.parent = currentNode;
-					//System.out.println(tempNode.cost);
 					setHeuristic(tempNode);
 					addToOpenList(tempNode);
 				}
@@ -39,6 +38,10 @@ public abstract class AStar {
 			closedList.add(currentNode);
 			currentNode.setStatus(Status.Visited);
 			currentNode = getBestOpenList();
+			if(currentNode == null){
+				System.out.println("No solution: Open list empty");
+				return;
+			}
 			currentNode.setStatus(Status.Visiting);
 			steps++;
 			processCurrentNode();
