@@ -6,6 +6,7 @@ public class PuzzleStateNode extends Node
 	public Point currentPosition;
 	public Point previousPosition;
 	public boolean invalid = false;
+	public Direction change;
 	public PuzzleStateNode(PuzzleNode[][] board,Point currentPosition, Direction change){
 		this.currentPosition = new Point(currentPosition.x,currentPosition.y);
 		this.board = new PuzzleNode[board.length][board[0].length];
@@ -15,6 +16,7 @@ public class PuzzleStateNode extends Node
 			}
 		}
 		previousPosition = new Point(currentPosition.x, currentPosition.y);
+		this.change = change;
 		changeBoardState(change);
 	}
 	public void changeBoardState(Direction change){

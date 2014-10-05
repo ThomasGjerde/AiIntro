@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import model.Point;
 import model.PuzzleNode;
@@ -8,9 +9,12 @@ import model.PuzzleNode;
 public class PuzzleGraphics extends Graphics
 {
 	PuzzleNode[][] boardArray;
+	ArrayList<GridText> extraText = new ArrayList<GridText>();
 	public PuzzleGraphics(PuzzleNode[][] board)
 	{
 		super(board.length,board[0].length);
+		grid.setScale(40);
+		this.boardArray = board;
 		setBoard(board);
 	}
 	public void setBoard(PuzzleNode[][] board){
@@ -22,12 +26,19 @@ public class PuzzleGraphics extends Graphics
         		}
         	}
         }
+        for(int i = 0; i < extraText.size(); i++){
+        	grid.addText(extraText.get(i));
+        }
         grid.repaint();
 	}
 	public void markCell(Point pos){
 		grid.clearColor(Color.RED);
 		grid.setCellColorWithoutRepaint(pos.x, pos.y, Color.RED);
 		grid.repaint();
+	}
+	public void addText(GridText text){
+		text.position.y = boardArray[0].length + extraText.size();
+		extraText.add(text);
 	}
 
 }

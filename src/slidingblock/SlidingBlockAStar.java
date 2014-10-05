@@ -2,6 +2,7 @@ package slidingblock;
 
 import java.util.ArrayList;
 
+import gui.GridText;
 import gui.PuzzleGraphics;
 import model.Node;
 import model.Point;
@@ -76,7 +77,7 @@ public class SlidingBlockAStar extends AStar
 	{
 		try
 		{
-			Thread.sleep(10);
+			Thread.sleep(50);
 		} catch (InterruptedException e)
 		{
 			// TODO Auto-generated catch block
@@ -90,6 +91,8 @@ public class SlidingBlockAStar extends AStar
 	protected void runVictory()
 	{
 		System.out.println("Correct path found. Rerunning path in slow motion");
+		graphics.addText(new GridText(new Point(0,0),"Correct path found. Rerunning path in slow motion"));
+		graphics.setBoard(((PuzzleStateNode)currentNode).board);
 		try
 		{
 			Thread.sleep(2000);
@@ -106,6 +109,9 @@ public class SlidingBlockAStar extends AStar
 				tempNode = (PuzzleStateNode) tempNode.parent;
 			}
 			for(int i = correctPath.size()-1; i >= 0; i--){
+				if(correctPath.get(i).change != null){
+					graphics.addText(new GridText(new Point(0,0),"Move " + correctPath.get(i).change));
+				}
 				graphics.setBoard(correctPath.get(i).board);
 				/*
 				if(correctPath.get(i).previousPosition != null){
